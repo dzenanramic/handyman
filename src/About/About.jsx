@@ -7,29 +7,21 @@ export default function About() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section with Full-Width Background Image */}
       <Box
         sx={{
           position: "relative",
           width: "100%",
-          minHeight: { xs: "50vh", md: "40vh" },
+          minHeight: { xs: "50vh", md: "90vh" },
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
+          background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.95)), url('/handyman-skills1.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Background with Gradient */}
-        <Box
-          sx={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "black",
-            background: "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95))",
-            zIndex: -1,
-          }}
-        />
-
         {/* Navigation Bar */}
         <Navigation
           sx={{
@@ -37,7 +29,7 @@ export default function About() {
             top: 0,
             left: 0,
             right: 0,
-            zIndex: 1,
+            zIndex: 1000,
           }}
         />
 
@@ -46,39 +38,53 @@ export default function About() {
           sx={{
             flexGrow: 1,
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            flexDirection: { xs: "column", md: "row" },
+            alignItems: "center",
+            justifyContent: "space-between",
             paddingX: {
               xs: theme.spacing(2),
               sm: theme.spacing(4),
               md: theme.spacing(8),
             },
-            paddingY: theme.spacing(6),
-            marginTop: "64px", // Add margin to prevent overlap with navigation
+            paddingTop: { xs: theme.spacing(8), md: theme.spacing(12) },
+            height: "100%",
+            zIndex: 1,
           }}
         >
-          <Typography
-            variant="h1"
+          {/* Text Content */}
+          <Box
             sx={{
-              fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4rem" },
-              fontFamily: "inter",
-              fontWeight: "800",
+              flex: 1,
+              pr: { md: 4 },
+              mb: { xs: 4, md: 0 },
               color: "white",
-              marginBottom: 2,
             }}
           >
-            About Me
-          </Typography>
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.8rem" },
-              color: "white",
-              opacity: 0.9,
-            }}
-          >
-            Your trusted local handyman with years of experience
-          </Typography>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4rem" },
+                fontFamily: "inter",
+                fontWeight: "800",
+                marginBottom: 2,
+              }}
+            >
+              About Me
+            </Typography>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.8rem" },
+                opacity: 0.9,
+                maxWidth: "600px",
+              }}
+            >
+              Your trusted local handyman with years of experience
+            </Typography>
+          </Box>
+
+          {/* Empty Space to Maintain Layout Balance */}
+          <Box sx={{ flex: 1, display: { xs: "none", md: "block" } }} />
         </Box>
       </Box>
 
