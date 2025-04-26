@@ -16,9 +16,18 @@ export default function About() {
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
-          background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.95)), url('/handyman-skills1.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          background: {
+            xs: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.95)), url('/handyman-skills.jpg')`,
+            md: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.95)), url('/handyman-skills1.jpg')`,
+          },
+          backgroundSize: {
+            xs: "contain", // show the *whole* image on extra-small
+            md: "cover", // keep the cover effect on medium and up
+          },
+          backgroundPosition: {
+            xs: " center", // move 30% from the left edge on xs
+            md: "center", // default back to center on md and up
+          },
           backgroundRepeat: "no-repeat",
         }}
       >
@@ -67,6 +76,7 @@ export default function About() {
                 fontFamily: "inter",
                 fontWeight: "800",
                 marginBottom: 2,
+                marginTop: { xs: 18, md: 0 },
               }}
             >
               About Me

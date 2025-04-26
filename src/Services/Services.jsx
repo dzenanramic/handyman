@@ -87,7 +87,7 @@ export default function Services() {
               mb: 2,
             }}
           >
-            Our Services
+            My Services
           </Typography>
           <Typography
             variant="h5"
