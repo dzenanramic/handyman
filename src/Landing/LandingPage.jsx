@@ -5,23 +5,7 @@ import Navigation from "../components/Navigation/Navigation";
 
 export default function LandingPage() {
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const navigations = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "My work", path: "/my-work" },
-    { name: "Contact", path: "/contact" },
-  ];
-  const handleNavigation = (path) => {
-    // Implement your navigation logic here
-    console.log(`Navigating to ${path}`);
-  };
   const handleBookNow = () => {
     // Implement your booking logic here
     console.log("Booking now");
