@@ -41,38 +41,43 @@ export default function LandingPage() {
 
   return (
     <>
-      {/* Hero Section with improved image handling */}
+      {/* Hero Section with <img> tag for better mobile display */}
       <Box
         sx={{
-          background: `
-            linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.95)),
-            url('/handyman.jpg')
-          `,
-          backgroundSize: {
-            xs: "auto 100%", // Show full height on mobile
-            md: "cover", // Cover on desktop
-          },
-          backgroundPosition: {
-            xs: "center center", // Center on mobile
-            md: "center", // Default center
-          },
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: {
-            xs: "scroll", // Regular scroll on mobile
-            md: "fixed", // Parallax on desktop
-          },
-          imageRendering: "high-quality",
+          position: "relative",
           width: "100%",
-          minHeight: {
-            xs: "100vh",
-            md: "85vh",
-          },
+          minHeight: { xs: "100vh", md: "90vh" },
+          overflow: "hidden",
           display: "flex",
           flexDirection: "column",
-          position: "relative",
-          overflow: "hidden",
         }}
       >
+        {/* Background Image */}
+        <Box
+          sx={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            backgroundImage: {
+              xs: "url('/handyman-portrait.png')",
+              md: "url('/handyman.jpg')",
+            },
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: { xs: "cover", md: "cover" }, // Full width on mobile, cover on desktop
+            zIndex: -2,
+          }}
+        />
+        {/* Gradient Overlay */}
+        <Box
+          sx={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.95))",
+            zIndex: -1,
+          }}
+        />
         {/* Navigation Bar */}
         <Box
           sx={{
@@ -121,7 +126,6 @@ export default function LandingPage() {
             ))}
           </Box>
         </Box>
-
         {/* Mobile Header */}
         <Box
           sx={{
@@ -152,7 +156,6 @@ export default function LandingPage() {
             <MenuIcon />
           </IconButton>
         </Box>
-
         {/* Mobile Drawer */}
         <Drawer
           variant="temporary"
@@ -212,16 +215,15 @@ export default function LandingPage() {
             </Box>
           </Box>
         </Drawer>
-
         {/* Main Content */}
         <Box
           sx={{
-            flexGrow: 1,
+            flexGrow: { xs: 0, md: 1 },
             display: "flex",
             flexDirection: "column",
             justifyContent: {
               xs: "flex-start",
-              md: "center",
+              md: "flex-start",
             },
             textAlign: "left",
             paddingX: {
@@ -233,6 +235,7 @@ export default function LandingPage() {
               xs: theme.spacing(4),
               sm: theme.spacing(4),
             },
+            marginTop: "200px",
           }}
         >
           <Box sx={{ marginBottom: { xs: 4, md: 2 } }}>
