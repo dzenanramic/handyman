@@ -1,6 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Landing/LandingPage";
+import About from "./About/About";
+import Navigation from "./components/Navigation/Navigation";
 // import About from "./pages/About";
 // import Services from "./pages/Services";
 // import MyWork from "./pages/MyWork";
@@ -10,10 +12,11 @@ import LandingPage from "./Landing/LandingPage";
 function App() {
   return (
     <BrowserRouter>
+      {/* <Navigation /> */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        {/* <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<About />} />
+        {/*<Route path="/services" element={<Services />} />
         <Route path="/my-work" element={<MyWork />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/book" element={<Book />} /> */}

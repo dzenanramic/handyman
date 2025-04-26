@@ -1,15 +1,7 @@
-import {
-  Box,
-  Button,
-  Typography,
-  useTheme,
-  Drawer,
-  IconButton,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import Navigation from "../components/Navigation/Navigation";
 
 export default function LandingPage() {
   const theme = useTheme();
@@ -41,7 +33,6 @@ export default function LandingPage() {
 
   return (
     <>
-      {/* Hero Section with <img> tag for better mobile display */}
       <Box
         sx={{
           position: "relative",
@@ -78,143 +69,17 @@ export default function LandingPage() {
             zIndex: -1,
           }}
         />
-        {/* Navigation Bar */}
-        <Box
+        {/* Navigation Bar - Now integrated */}
+        <Navigation
           sx={{
-            display: { xs: "none", md: "flex" },
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingY: theme.spacing(2),
-            paddingX: {
-              xs: theme.spacing(2),
-              sm: theme.spacing(4),
-              md: theme.spacing(8),
-            },
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1,
           }}
-        >
-          <Typography
-            sx={{
-              color: "white",
-              fontWeight: "medium",
-              fontFamily: "inter",
-              fontSize: "18px",
-              letterSpacing: "0.1rem",
-            }}
-          >
-            Elvir, your local handyman
-          </Typography>
-          <Box>
-            {navigations.map((nav) => (
-              <Button
-                key={nav.name}
-                sx={{
-                  color: "white",
-                  fontWeight: "medium",
-                  width: "150px",
-                  fontFamily: "inter",
-                  fontSize: "16px",
-                  letterSpacing: "0.15rem",
-                  textTransform: "none",
-                  "&:hover": {
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                  },
-                }}
-                onClick={() => handleNavigation(nav.path)}
-              >
-                {nav.name}
-              </Button>
-            ))}
-          </Box>
-        </Box>
-        {/* Mobile Header */}
-        <Box
-          sx={{
-            display: { xs: "flex", md: "none" },
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: theme.spacing(2),
-          }}
-        >
-          <Typography
-            sx={{
-              color: "white",
-              fontWeight: "medium",
-              fontFamily: "inter",
-              fontSize: "16px",
-              letterSpacing: "0.1rem",
-            }}
-          >
-            Elvir, your local handyman
-          </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ color: "white" }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Box>
-        {/* Mobile Drawer */}
-        <Drawer
-          variant="temporary"
-          anchor="right"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block", md: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: 240,
-              backgroundColor: "black",
-            },
-          }}
-        >
-          <Box sx={{ p: 2 }}>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <IconButton onClick={handleDrawerToggle} sx={{ color: "white" }}>
-                <CloseIcon />
-              </IconButton>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-                mt: 2,
-              }}
-            >
-              {navigations.map((nav) => (
-                <Button
-                  key={nav.name}
-                  sx={{
-                    color: "white",
-                    fontWeight: "medium",
-                    fontFamily: "inter",
-                    fontSize: "16px",
-                    letterSpacing: "0.1rem",
-                    textTransform: "none",
-                    justifyContent: "flex-start",
-                    py: 1.5,
-                    "&:hover": {
-                      backgroundColor: "rgba(255,255,255,0.1)",
-                    },
-                  }}
-                  onClick={() => {
-                    handleNavigation(nav.path);
-                    handleDrawerToggle();
-                  }}
-                >
-                  {nav.name}
-                </Button>
-              ))}
-            </Box>
-          </Box>
-        </Drawer>
+        />
+
         {/* Main Content */}
         <Box
           sx={{
